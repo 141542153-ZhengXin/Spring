@@ -7,6 +7,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Map;
 
 @Controller
@@ -53,9 +54,8 @@ public class WebController {
     }
 
     /**
-     * @PathVariable获取请求url模板变量的值
-     * 例：/pathExample/path
      * @param pathName
+     * @PathVariable获取请求url模板变量的值 例：/pathExample/path
      */
     @GetMapping("/pathExample/{pathName}")
     @ResponseBody
@@ -64,9 +64,8 @@ public class WebController {
     }
 
     /**
-     * @PathVariable获取请求url模板变量的值
-     * 例：/pathExample/path/path2
      * @param pathMap
+     * @PathVariable获取请求url模板变量的值 例：/pathExample/path/path2
      */
     @GetMapping("/pathExample/{pathName}/{pathName2}")
     @ResponseBody
@@ -75,12 +74,11 @@ public class WebController {
     }
 
     /**
-     * @PathVariable获取请求url模板变量的值
-     * @MatrixVariable获取矩阵变量的值
-     * 例：/pathAndMatrixExample/path;q=1;r=2
      * @param pathName
      * @param q
      * @param r
+     * @PathVariable获取请求url模板变量的值
+     * @MatrixVariable获取矩阵变量的值 例：/pathAndMatrixExample/path;q=1;r=2
      */
     @GetMapping("/pathAndMatrixExample/{pathName}")
     @ResponseBody
@@ -89,11 +87,10 @@ public class WebController {
     }
 
     /**
-     * @PathVariable获取请求url模板变量的值
-     * @MatrixVariable获取矩阵变量的值
-     * 例：/pathAndMatrixExample/path;q=1/path2;q=2
      * @param q1
      * @param q2
+     * @PathVariable获取请求url模板变量的值
+     * @MatrixVariable获取矩阵变量的值 例：/pathAndMatrixExample/path;q=1/path2;q=2
      */
     @GetMapping("/pathAndMatrixExample/{pathName}/{pathName2}")
     @ResponseBody
@@ -102,9 +99,8 @@ public class WebController {
     }
 
     /**
-     * @MatrixVariable获取矩阵变量的值,非必需，默认值为1
-     * 例：/pathAndMatrixExampleWithoutReq/path
      * @param q
+     * @MatrixVariable获取矩阵变量的值,非必需，默认值为1 例：/pathAndMatrixExampleWithoutReq/path
      */
     @GetMapping("/pathAndMatrixExampleWithoutReq/{pathName}")
     @ResponseBody
@@ -113,10 +109,9 @@ public class WebController {
     }
 
     /**
-     * @MatrixVariable获取矩阵变量的值
-     * 例：/pathAndMatrixMapExample/path;q=1;r=1/path2;q=2;r=2
      * @param matrixVars
      * @param matrixVars2
+     * @MatrixVariable获取矩阵变量的值 例：/pathAndMatrixMapExample/path;q=1;r=1/path2;q=2;r=2
      */
     @GetMapping("/pathAndMatrixMapExample/{pathName}/{pathName2}")
     @ResponseBody
@@ -188,8 +183,8 @@ public class WebController {
     }
 
     /**
-     * @RequestParam将请求参数绑定到控制器中的方法参数
      * @param id
+     * @RequestParam将请求参数绑定到控制器中的方法参数
      */
     @GetMapping(value = "/paramExample")
     @ResponseBody
@@ -198,8 +193,8 @@ public class WebController {
     }
 
     /**
-     * @RequestParam将请求参数绑定到控制器中的方法参数
      * @param map
+     * @RequestParam将请求参数绑定到控制器中的方法参数
      */
     @GetMapping(value = "/paramMapExample")
     @ResponseBody
@@ -208,8 +203,8 @@ public class WebController {
     }
 
     /**
-     * @RequestBody将方法参数绑定到HTTP请求正文,非必需
      * @param id
+     * @RequestBody将方法参数绑定到HTTP请求正文,非必需
      */
     @PostMapping(value = "/requestBodyExample")
     @ResponseBody
@@ -220,11 +215,12 @@ public class WebController {
     /**
      * HttpEntity 类似于 @RequestBody 和 @ResponseBody 。除了访问请求和响应主体外，
      * HttpEntity（以及特定于响应的子类 ResponseEntity ）还允许访问请求和响应头
+     *
      * @param requestEntity
      * @return
      */
     @PostMapping(value = "/httpEntityExample")
-    public ResponseEntity<String> httpEntityExample(HttpEntity<byte[]> requestEntity){
+    public ResponseEntity<String> httpEntityExample(HttpEntity<byte[]> requestEntity) {
         String requestHeader = requestEntity.getHeaders().getFirst("MyRequestHeader");
         byte[] requestBody = requestEntity.getBody();
         HttpHeaders responseHeaders = new HttpHeaders();

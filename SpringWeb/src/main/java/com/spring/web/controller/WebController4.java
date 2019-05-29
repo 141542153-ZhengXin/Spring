@@ -1,15 +1,13 @@
 package com.spring.web.controller;
 
-import com.spring.web.model.User;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/web4")
@@ -18,14 +16,20 @@ public class WebController4 {
 
     private final static Logger logger = LoggerFactory.getLogger(WebController4.class);
 
+    @ModelAttribute
+    public void initRequest(HttpServletRequest request) {
+       request.setAttribute("id","1");
+    }
+
     /**
-     * @SessionAttribute是用于获取已经存储的session数据，并且作用在方法的层面上。
-     * @param user
+     * @RequestAttribute 注释可用于访问由过滤器或拦截器创建的预先存在的请求属性
+     * @param id
      * @return
      */
-    @RequestMapping("/sessionExample")
-    public String sessionExample(@SessionAttribute("user") User user) {
-        logger.info("user:" + user);
-        return "web4/sessionExample";
+    @RequestMapping("/requestExample")
+    public String requestExample(@RequestAttribute String id) {
+        logger.info("id:" + id);
+        return "web4/requestExample2";
     }
+
 }

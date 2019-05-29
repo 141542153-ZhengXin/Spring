@@ -124,6 +124,7 @@ public class WebController2 {
     /**
      * 在某些情况下，在没有数据绑定的情况下访问模型中的属性可能很有用。
      * 对于这种情况，您可以将 Model 注入控制器，或者在注释上使用 binding 标志
+     *
      * @param user
      * @return
      */
