@@ -23,6 +23,7 @@
     <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
   </listener>
 
+  <!--*支持HTTP PUT和PATCH请求*-->
   <filter>
     <filter-name>httpPutFormFilter</filter-name>
     <filter-class>org.springframework.web.filter.HttpPutFormContentFilter</filter-class>
@@ -32,6 +33,8 @@
     <filter-name>httpPutFormFilter</filter-name>
     <servlet-name>SpringWeb</servlet-name>
   </filter-mapping>
+  <!--*************************-->
+
 
   <servlet>
     <servlet-name>SpringWeb</servlet-name>
